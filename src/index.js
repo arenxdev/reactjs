@@ -1,12 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const name = 'Kathe'
+// const element = React.createElement('a', {href: 'https://platzi.com'}, 'Go to platzi')
+// const element = React.createElement('h1', {href: 'https://platzi.com'}, `Hi, I'm ${name}`)
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+const jsx = <div>
+  <h1>Hi I'm Aaron</h1>
+  <p>I'm Web Developer</p>
+</div>
+
+const container = document.getElementById('app')
+ReactDOM.render(jsx, container)

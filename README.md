@@ -1,68 +1,97 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# CURSO DE REACT JS
 
-## Available Scripts
+## INTRODUCCIÓN A REACT JS
 
-In the project directory, you can run:
+### ¿QUÉ ES REACT?
 
-### `npm start`
+React cumple su función como biblioteca ya que para utilizar su código se debe importar. También es un Framework aunque las convenciones de cómo debe ser organizado todo no son estrictas.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+En este curso aprenderás las prácticas que la comunidad ha decidido que son buenas.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+> React es declarativo, lo que quiere decir que se le indica qué debe hacer pero no cómo debe hacerse, ahorrando de esta manera muchos pasos.
 
-### `npm test`
+JSX es HTML dentro de Javascript, esto se verá más adelante en detalle.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React está estructurado por componentes que son como pequeños bloques de lego que al ser unidos forman aplicaciones de React. Estos componentes pueden tener estilos, ser enlazados a eventos y sus estados pueden ser modificados.
 
-### `npm run build`
+Con React también se tiene la ventaja de que será escrito una sola vez y podrá ser utilizado en aplicaciones web, móviles, entre otras.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### HERRAMIENTAS QUE USAREMOS
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Estas son las herramientas que usaremos en el curso:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Navegador: Especialmente Chrome ya que cuenta con óptimas herramientas de desarrollo.
+- React Developer Tools: Es una herramienta Open Source creada por Facebook y tiene instalación para Chrome o Firefox. Nos dejará ver el código de React inspeccionando elementos.
+- Editor de texto: Puedes usar cualquiera, en este curso sugerimos Visual Studio Code. Tiene muchos plugins útiles para el desarrollo.
+- Prettier: Es un plugin que hace que el código se vea bien sin importar cómo esta escrito.
 
-### `npm run eject`
+### CREATE REACT APP
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**create-react-app** es una aplicación moderna que se usa desde una línea de comando. Antes de ella se configuraba todo el entorno manualmente lo cual tomaba mucho tiempo.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pasos para obtenerlo:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- Se debe instalar desde la línea de comando usando `npm install -g create-react-app`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Una vez instalado se crea la carpeta del proyecto con `create-react-app -nombre del proyecto-`
 
-## Learn More
+En este punto se estará instalando React y otras herramientas, también se configurará el entorno usando Webpack.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Una vez se instala todo entra a la carpeta src donde estará todo el código fuente de la aplicación, siendo el más importante index.js que es el punto de entrada a la aplicación.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Finalmente para correr la aplicación se usa el comando `npm run start`
 
-### Code Splitting
+Otras herramientas:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+- Babel: Traduce Javascript moderno (JSX) a un Javascript que todos los navegadores puedan interpretar.
+- Eslint: Lee el código y avisa de errores.
 
-### Analyzing the Bundle Size
+### FUNDAMENTOS
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+### ReactDOM.render
 
-### Making a Progressive Web App
+React y ReactDOM trabajarán en conjunto.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+- React como análogo a createElement.
+- ReactDOM a appendChild-
 
-### Advanced Configuration
+`ReactDOM.render()` toma dos argumentos: Qué queremos renderizar y dónde lo queremos renderizar.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Siempre que escribas JSX es requisito importar **React**.
 
-### Deployment
+### JSX
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+JSX es una extensión de JavaScript creada por Facebook para el uso con la biblioteca React; sirve de preprocesador (como Sass o Stylus a CSS) y transforma el código generado con React a JavaScript.
 
-### `npm run build` fails to minify
+JSX tiene su alternativa que es React.createElement pero es preferible JSX porque es mucho más legible y expresivo. Ambos tienen el mismo poder y la misma capacidad.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+React.createElement recibe 3 argumentos:
+
+1. El tipo de elemento que estamos creando
+2. Atributos o props
+3. El children que es el contenido.
+
+Ejemplo:
+
+```javascript
+  React.createElement('a', { href: 'https://platzi.com' }, 'Ir a Platzi')
+```
+
+En **JSX** se utilizan las llaves para introducir variables o expresiones de Javascript. Lo que sea que esté adentro se va a evaluar y su resultado se mostrará en pantalla.
+
+Las expresiones pueden ser llamadas a otras funciones, cálculos matemáticos, etc. Si las expresiones son false, 0, null, undefined, entre otros, no se verán.
+
+En **jsx** es posible representar funciones através de `{}`, una **expresión** es algo que en JavaScript se va a interpretar y evaluar, por ejemplo `{2 + 2}`, si la expresión es null, o undefined los datos no se van a ver
+
+```javascript
+  import React from 'react'
+  import ReactDOM from 'react-dom'
+
+  const jsx = <div>
+    <h1>Hi I'm Aaron</h1>
+    <p>I'm Web Developer</p>
+  </div>
+
+  const container = document.getElementById('app')
+  ReactDOM.render(jsx, container)
+```
