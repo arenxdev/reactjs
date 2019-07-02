@@ -116,3 +116,9 @@ Para identificarlos debes hacerte las siguientes preguntas:
 - ¿Qué elementos cumplen una función muy específica? Estos sirven para encapsular la lógica y permiten juntar muchos comportamientos y aspectos visuales en un solo lugar.
 
 > Identificar componentes es una habilidad esencial para poder desarrollar aplicaciones de React.
+
+### NUESTOR PRIMER COMPONENTE
+
+- Es una buena práctica que los componentes vivan en su propio archivo y para ello se les crea una carpeta.
+- Todos los componentes requieren por lo menos el método **render** que define cuál será el resultado que aparecerá en pantalla.
+- El **source** de las imágenes en React puede contener direcciones en la web o se le puede hacer una referencia directa importándola. Si se importa deben usarse llaves para que sea evaluado.
