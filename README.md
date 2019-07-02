@@ -129,3 +129,9 @@ Para identificarlos debes hacerte las siguientes preguntas:
 - Para usar los estilos es necesario importarlos con import React funciona ligeramente diferente y para los atributos de clases no se utiliza class sino className
 - Es posible utilizar **Bootstrap** con React, sólo debe ser instalado con `npm install bootstrap` y debe ser importado en el index.js
 - Existen estilos que son usados de manera global o en varios componentes, así que deben ser importados en el index.js
+
+### PROPS
+
+Los **props** que es la forma corta de **properties** son argumentos de una función y en este caso serán los atributos de nuestro componente como class, src, etc.
+
+Estos props salen de una variable de la clase que se llama `this.props` y los valores son asignados directamente en el `ReactDOM.render()`.
