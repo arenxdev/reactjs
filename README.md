@@ -141,3 +141,14 @@ Estos props salen de una variable de la clase que se llama `this.props` y los va
 Las páginas en React son componentes conseguir distinguirlas nos servirá para saber que es un componente que adentro lleva otros componentes.
 
 - Al escribir los props no importa el orden en el que lo hagas, únicamente importa el nombre.
+
+### ENLAZANDO EVENTOS
+
+**React** dispone de eventos. Cada vez que se recibe información en un input se obtiene un evento onChange y se maneja con un método de la clase `this.handleChange`.
+
+Los elementos button también tienen un evento que es onClick.
+
+Cuando hay un botón dentro de un formulario, este automáticamente será de tipo submit. Si no queremos que pase así hay dos maneras de evitarlo:
+
+1. Especificando que su valor es de tipo **button**.
+2. manejándolo desde el formulario cuando ocurre el evento **onSubmit**.
