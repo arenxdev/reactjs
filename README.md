@@ -159,3 +159,5 @@ Hasta esta clase todos los componentes han obtenido su información a través de
 
 - Para guardar la información en el estado se usa una **función** de la clase component llamada `setState` a la cual se le debe pasar un objeto con la información que se quiere guardar.
 - Aunque no se ve, la información está siendo guardada en dos sitios. Cada input guarda su propio valor y al tiempo la está guardando en setState, lo cual no es ideal. Para solucionarlo hay que modificar los inputs de un estado de no controlados a controlados.
+
+> Para solucioar esto es posible pasar un **prop** adicional `value`  que va a desplegar cada uno de los input. Es importante tener en cuenta inicializar el objeto state.

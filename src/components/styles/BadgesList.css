@@ -1,0 +1,37 @@
+.Badge__min {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  grid-column-gap: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+.Badge__min-img {
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.Badge__min-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.Badge__min-name {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.Badge__min-twitter {
+  color: #0074e8;
+  cursor: pointer;
+}
+
+.Badge__min-icon {
+  font-size: 25px;
+  margin-right: 5px;
+}
