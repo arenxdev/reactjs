@@ -161,3 +161,51 @@ Hasta esta clase todos los componentes han obtenido su información a través de
 - Aunque no se ve, la información está siendo guardada en dos sitios. Cada input guarda su propio valor y al tiempo la está guardando en setState, lo cual no es ideal. Para solucionarlo hay que modificar los inputs de un estado de no controlados a controlados.
 
 > Para solucioar esto es posible pasar un **prop** adicional `value`  que va a desplegar cada uno de los input. Es importante tener en cuenta inicializar el objeto state.
+
+## REACT ROUTER
+
+### INTRODUCCIÓN A REACT ROUTER
+
+Las aplicaciones que se trabajan en React son llamadas single page apps. Esto es posible gracias a React Router que es una librería Open Source.
+
+- Multi Page Apps: Cada página implica una petición al servidor. La respuesta usualmente tiene todo el contenido de la página.
+- Single Page Apps (SPA): Aplicaciones que cargan una sola página de HTML y cualquier actualización la hacen re-escribiendo el HTML que ya tenían.
+- React Router (v4): Nos da las herramientas para poder hacer SPA fácilmente. Usaremos 4 componentes:
+
+  **1. Route**: Cuando hay un match con el path, se hace render del component. El component va a recibir tres props: match, history, location.
+  **2. BrowserRouter**: es un componente que debe estar siempre lo más arriba de la aplicación. Todo lo que esté adentro funcionará como una SPA.
+  **3. Switch**: Dentro de Switch solamente van elementos de Route. Switch se asegura que solamente un Route se renderize.
+  **4. Link**: Toma el lugar del elemento `<a>`, evita que se recargue la página completamente y actualiza la URL.
+
+### DIVISION DE LA APLICACIÓN EN RUTAS
+
+Para instalar React Router lo hacemos desde la terminal con `npm install react-router-dom`. Como es importante usar exactamente la misma versión, del package.json en “dependencies” se quita lo que está delante del 4.
+
+> Link internamente tiene un elemento `<a>` pero va a interceptar el click para navegar de manera interna sin refrescar toda la página.
+
+```javascript
+  import React from 'react'
+  import { BrowserRouter, Switch, Route } from 'react-router-dom'
+
+  import Badges from '../pages/Badges'
+  import BadgeNew from '../pages/BadgeNew'
+
+  const App = () => {
+    return (
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/badges" component={Badges} />
+          <Route exact path="/badges/new" component={BadgeNew} />
+        </Switch>
+      </BrowserRouter>
+    )
+  }
+
+  export default App
+```
+
+Adicionalmente, el elemento Link ya no contiene el atribute _href_ sino _to_
+
+```html
+  <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
+```
