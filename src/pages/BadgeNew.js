@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import Navbar from '../components/Navbar'
+import React, { Component, Fragment } from 'react'
 import Header from '../components/Header'
 import Badge from '../components/Badge'
 import BadgeForm from '../components/BadgeForm'
@@ -7,8 +6,7 @@ import BadgeForm from '../components/BadgeForm'
 class BadgeNews extends Component {
   render() {
     return (
-      <div>
-        <Navbar />
+      <Fragment>
         <Header />
         <div className="container">
           <div className="row">
@@ -26,7 +24,7 @@ class BadgeNews extends Component {
             </div>
           </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }
