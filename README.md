@@ -244,3 +244,21 @@ Otra forma de hacer que todas tus URL’s que no existan sean redirigidas a tu c
 ```
 
 Como podemos observar llamamos a nuestro componente 404 y luego utilizamos Redirect, el cual es un componente de React Router para hacer redirecciones; en este caso hacemos que todas las URL’s que no correspondan a alguna que hayamos declarado, sean redirigidas a MiComponente404.
+
+## COMPONENT LIFECYCLE
+
+### Introducción al ciclo de vida de un componente
+
+Cuando React renderiza los componentes decimos que entran en escena, cuando su estado cambia o recibe unos props diferentes se actualizan y cuando cambiamos de página se dice que se desmontan.
+
+- **Montaje:** Representa el momento donde se inserta el código del componente en el DOM. Se llaman tres métodos: 
+  1. constructor
+  2. render
+  3. componentDidMount.
+
+- **Actualización:** Ocurre cuando los props o el estado del componente cambian. Se llaman dos métodos:
+  1. render.
+  2. componentDidUpdate: Este método recibe dos argumentosq eu son los props y el estado que tenía anteriormente; esto sirve para comparar la versión anterior del componente y la versión actual.
+
+- **Desmontaje:** Nos da la oportunidad de hacer limpieza de nuestro componente. Se llama un método:
+  1. componentWillUnmount.
