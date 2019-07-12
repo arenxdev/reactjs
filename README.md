@@ -262,3 +262,22 @@ Cuando React renderiza los componentes decimos que entran en escena, cuando su e
 
 - **Desmontaje:** Nos da la oportunidad de hacer limpieza de nuestro componente. Se llama un método:
   1. componentWillUnmount.
+
+### Práctica del ciclo de vida
+
+Orden de ejecución de los métodos:
+
+- Montaje:
+  1. Constructor.
+  2. Render.
+  3. ComponentDidMount.
+  4. Render.
+  5. ComponentWillUnmount
+
+El render aparece de nuevo en la posición 4 debido a que al actualizar los datos del componente se vuelve a ejecutar este método.
+
+Una vez se termina de renderizar entra el método componentDidUpdate.
+
+#### ¿Qué pasa si hacemos una llamada asíncrona y el componente muere antes de la promesa o el callback?
+
+En estos casos es posible limpiar las llamadas asíncronas en el ComponentWillAmount
