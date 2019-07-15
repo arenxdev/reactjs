@@ -1,0 +1,10 @@
+.Loader__div {
+  height: 40px;
+  width: 40px;
+}
+
+.Loader__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

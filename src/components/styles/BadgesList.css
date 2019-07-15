@@ -13,6 +13,14 @@
 .Badge__min-img {
   border-radius: 50%;
   overflow: hidden;
+  width: 80px;
+  height: 80px;
+}
+
+.Badge__min-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
 }
 
 .Badge__min-content {
@@ -34,4 +42,10 @@
 .Badge__min-icon {
   font-size: 25px;
   margin-right: 5px;
+}
+
+.Badge__more {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }

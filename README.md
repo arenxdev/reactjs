@@ -162,6 +162,12 @@ Hasta esta clase todos los componentes han obtenido su información a través de
 
 > Para solucioar esto es posible pasar un **prop** adicional `value`  que va a desplegar cada uno de los input. Es importante tener en cuenta inicializar el objeto state.
 
+### LEVANTAMIENTO DE ESTADO
+
+Levantar el estado es una técnica de React que pone el estado en una localización donde se le pueda pasar como props a los componentes. Lo ideal es poner el estado en el lugar más cercano a todos los componentes que quieren compartir esa información.
+
+Algo interesante que le da el nombre a React es su parte de “reactivo” ya que cada vez que hay un cambio en el estado o en los props que recibe un componente se vuelve a renderizar todo el componente y todos sus descendientes.
+
 ## REACT ROUTER
 
 ### INTRODUCCIÓN A REACT ROUTER
@@ -281,3 +287,18 @@ Una vez se termina de renderizar entra el método componentDidUpdate.
 #### ¿Qué pasa si hacemos una llamada asíncrona y el componente muere antes de la promesa o el callback?
 
 En estos casos es posible limpiar las llamadas asíncronas en el ComponentWillAmount
+
+## LLAMADAS A UN API
+
+### INTRODUCCIÓN A LLAMADAS A UN API
+
+Las llamadas a una API siguen un patrón similar siempre que las hacemos, cada llamada consta de tres estados:
+
+- **Loading**: cuando la petición se envía y estamos esperando.
+- **Error**: se debe dejar un mensaje para el usuario para arreglar el error o volver a intentarlo.
+- **Data**: los datos nos pueden llegar de dos formas, o en error o con los datos requeridos.
+
+### TRAER DATOS DESDE UN API EN REACT
+
+Una llamada a una API es un proceso asíncrono, es decir que lo comenzamos pero no sabemos cuándo acabará. Por lo mismo la función a escribir debe ser asíncrona.
+La llamada se hará usando fetch que es una función de React que al pasarle una dirección de internet, hará una petición GET y lo que sea que exista ahí será devuelto.

@@ -4,6 +4,17 @@ import Badge from '../components/Badge'
 import BadgeForm from '../components/BadgeForm'
 
 class BadgeNews extends Component {
+  state = {form : {firstName: '', lastName: '', email: '', jobTitle: '', twitter: ''}}
+
+  handleChange = ({ target: { name, value } }) => {
+    this.setState({ 
+      form: {
+        ...this.state.form, 
+        [name]: value
+      }
+    })
+  }
+
   render() {
     return (
       <Fragment>
@@ -12,15 +23,19 @@ class BadgeNews extends Component {
           <div className="row">
             <div className="col">
               <Badge
-                firstName="Aaron"
-                lastName="Isaacs"
-                jobTitle="Full Stack Developer"
-                twitter="ing_isaacs"
+                firstName={this.state.form.firstName}
+                lastName={this.state.form.lastName}
+                jobTitle={this.state.form.jobTitle}
+                twitter={this.state.form.twitter}
+                email={this.state.form.email}
                 avatarUrl="https://es.gravatar.com/userimage/159727741/b202ede4610fa5c402ee58da070422e8.png?size=200"
               />
             </div>
             <div className="col">
-              <BadgeForm />
+              <BadgeForm 
+                onChange={this.handleChange}
+                formValues={this.state.form}
+              />
             </div>
           </div>
         </div>
