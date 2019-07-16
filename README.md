@@ -302,3 +302,5 @@ Las llamadas a una API siguen un patrón similar siempre que las hacemos, cada l
 
 Una llamada a una API es un proceso asíncrono, es decir que lo comenzamos pero no sabemos cuándo acabará. Por lo mismo la función a escribir debe ser asíncrona.
 La llamada se hará usando fetch que es una función de React que al pasarle una dirección de internet, hará una petición GET y lo que sea que exista ahí será devuelto.
+
+### SOLICITANDO DATOS GET

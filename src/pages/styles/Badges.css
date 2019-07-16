@@ -25,12 +25,13 @@
 
 .Badges__buttons {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-bottom: 1rem;
+  align-items: center;
 }
 
 .Badges__list {
-  height: 630px;
+  height: 540px;
   padding: 0 10px;
   overflow-y: scroll;
 }

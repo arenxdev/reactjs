@@ -1,0 +1,99 @@
+
+.Toogle__input {
+  display: none;
+}
+
+.Toogle__title {
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.Toogle__label {
+  display: block;
+  width: 50px;
+  height: 20px;
+  border: 2px solid #333333;
+  margin-bottom: 20px;
+  cursor: pointer;
+  position: relative;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.Toogle__label:after {
+  display: block;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background: #333;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  left: 3px;
+  top: 3px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.Toogle__label:hover {
+  border: 2px solid #000;
+}
+
+.Toogle__label:hover:after {
+  background: #000;
+}
+
+.Toogle__label:active {
+  border: 2px solid #666666;
+  background: #666;
+}
+
+.Toogle__label:active:after {
+  background: #fff;
+}
+
+.Toogle__label:before {
+  display: inline-block;
+  height: 22px;
+  line-height: 22px;
+  white-space: nowrap;
+  position: absolute;
+  left: 60px;
+  top: -2px;
+  font-size: 15px;
+}
+
+.Toogle__input+label:before {
+  content: attr(data-off);
+}
+
+.Toogle__input:checked+label:before {
+  content: attr(data-on);
+}
+
+.Toogle__input:checked+label {
+  border: 2px solid rgb(125, 205, 64);
+  background: rgb(125, 205, 64);
+}
+
+.Toogle__input:checked+label:hover {
+  border: 2px solid rgba(125, 205, 64, .8);
+  background: rgba(125, 205, 64, .8);
+}
+
+.Toogle__input:checked+label:after {
+  left: 33px;
+  background: #FFF;
+}
+
+.Toogle__input:checked+label:active {
+  border: 2px solid #666666;
+  background: #666;
+}
+
+.Toogle__input:checked+label:active:after {
+  background: #fff;
+}

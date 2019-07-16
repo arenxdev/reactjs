@@ -2,7 +2,9 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import BadgesList from '../components/BadgesList'
 import Loader from '../components/Loader'
+import Toogle from '../components/Toogle'
 import confLogo from '../images/badge-header.svg'
+import confRick from '../images/confRick.png'
 import './styles/Badges.css'
 
 const API = 'https://us-central1-api-cv-3b8cb.cloudfunctions.net/react'
@@ -15,12 +17,25 @@ class Badges extends Component {
       loading: true,
       error: null,
       nextPage: 1,
-      data: []
+      data: [],
+      esRickAndMorty: false,
+      cambioApi: false
     }
   }
 
-  fetchReactApi = async (rick) => {
-    this.setState({loading:true, error: null})
+  handleRickCheckbox = ({ target }) => {
+      this.setState({ 
+      ...this.state,
+      data: [],
+      esRickAndMorty: target.checked,
+      nextPage: 1,
+      cambioApi: true
+    })
+  }
+
+  fetchReactApi = async () => {
+    const rick = this.state.esRickAndMorty
+    this.setState({esRickAndMorty: rick, loading:true, error: null})
     const rest = rick?API_RICK:API
     try {
       const res = await fetch(`${rest}?page=${this.state.nextPage}`)
@@ -41,18 +56,18 @@ class Badges extends Component {
           })
           data = {data: [].concat(this.state.data, dataRick)}
         }
-        data = {...data, loading: false, nextPage: this.state.nextPage+1}
+        data = {...data, loading: false, nextPage: this.state.nextPage+1, esRickAndMorty: rick}
         this.setState(data)
       }
     } catch (error) {
-      this.setState({loading: false, error})
+      this.setState({loading: false, error, esRickAndMorty: rick})
     }
   }
 
   componentDidMount() {
     this.controller = new AbortController()
     this.mounted = true
-    this.fetchReactApi(true)
+    this.fetchReactApi()
     console.log('3ro. Component Did Mount')
   }
 
@@ -60,6 +75,10 @@ class Badges extends Component {
     console.log('5to. Component Did Update')
     console.log({ prevProps, prevState })
     console.log({ props: this.props, state: this.state })
+    if(this.state.cambioApi) {
+      this.setState({...this.state, cambioApi: false})
+      this.fetchReactApi()
+    }
   }
 
   componentWillUnmount() {
@@ -73,14 +92,20 @@ class Badges extends Component {
       <Fragment>
         <div className="Badges">
           <div className="Badges__hero">
-            <div className="Badges__container">
-              <img src={confLogo} alt="" className="Badges_conf-logo" />
+            <div className="Badges__container" style={{height: '125px'}}>
+              <img src={this.state.esRickAndMorty?confRick:confLogo} alt="" className="Badges_conf-logo" />
             </div>
           </div>
         </div>
         <div className="Badges__container">
           <div className="Badges__buttons">
-            <Link to="/badges/new" className="btn btn-primary">New Badge</Link>
+            <Toogle 
+              title="Do you like Rick && Morty?"
+              dataon="Rick And Morty"
+              dataoff="Badge API"
+              onClick={this.handleRickCheckbox}
+            />
+            <Link to="/badges/new" className="btn btn-primary" style={{height: '40px'}}>New Badge</Link>
           </div>
           <div className="Badges__list">
             {this.state.error &&
@@ -94,7 +119,7 @@ class Badges extends Component {
 
             {!this.state.loading &&
               <div className="Badge__more">
-                <button onClick={() => this.fetchReactApi(true)} className="btn btn-primary">Load more</button>
+                <button onClick={() => this.fetchReactApi()} className="btn btn-primary">Load more</button>
               </div>
             }
           </div>
