@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import BadgesList from '../components/BadgesList'
-import Loader from '../components/Loader'
+// import Loader from '../components/Loader'
+import PageLoader from '../components/PageLoader'
+import PageError from '../components/PageError'
 import Toogle from '../components/Toogle'
 import confLogo from '../images/badge-header.svg'
 import confRick from '../images/confRick.png'
@@ -114,12 +116,12 @@ class Badges extends Component {
           </div>
           <div className="Badges__list">
             {this.state.error &&
-                `Error: ${this.state.error.message}`
+              <PageError error={this.state.error} />
             }
             <BadgesList badges={this.state.data} />
 
             {this.state.loading &&
-              <Loader />
+              <PageLoader />
             }
 
             {!this.state.loading && isData &&

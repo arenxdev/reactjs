@@ -6,7 +6,6 @@ const containerStyle = {
   display: 'flex',
   width: '100%',
   justifyContent: 'center',
-  backgroundColor: 'rgba(0, 0, 0, .1)',
   margin: '5px 0'
 }
 
