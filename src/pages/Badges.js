@@ -5,6 +5,7 @@ import Loader from '../components/Loader'
 import Toogle from '../components/Toogle'
 import confLogo from '../images/badge-header.svg'
 import confRick from '../images/confRick.png'
+import api from '../api'
 import './styles/Badges.css'
 
 const API = 'https://us-central1-api-cv-3b8cb.cloudfunctions.net/react'
@@ -17,7 +18,7 @@ class Badges extends Component {
       loading: true,
       error: null,
       nextPage: 1,
-      data: [],
+      data: undefined,
       esRickAndMorty: false,
       cambioApi: false
     }
@@ -26,7 +27,7 @@ class Badges extends Component {
   handleRickCheckbox = ({ target }) => {
       this.setState({ 
       ...this.state,
-      data: [],
+      data: undefined,
       esRickAndMorty: target.checked,
       nextPage: 1,
       cambioApi: true
@@ -54,13 +55,16 @@ class Badges extends Component {
               jobTitle: result.species
             })
           })
-          data = {data: [].concat(this.state.data, dataRick)}
+          // data = this.state.data?{data: [].concat(this.state.data, dataRick)}:{data: dataRick}
+          data = {data: [].concat(this.state.data || [], dataRick)}
+        } else {
+          data = {data: await api.badges.list()}
         }
         data = {...data, loading: false, nextPage: this.state.nextPage+1, esRickAndMorty: rick}
         this.setState(data)
       }
     } catch (error) {
-      this.setState({loading: false, error, esRickAndMorty: rick})
+      this.setState({loading: false, error: error, esRickAndMorty: rick})
     }
   }
 
@@ -88,6 +92,7 @@ class Badges extends Component {
 
   render() {
     console.log('2do. y 4to. Render')
+    const isData = this.state.data && this.state.data.length > 0
     return (
       <Fragment>
         <div className="Badges">
@@ -109,7 +114,7 @@ class Badges extends Component {
           </div>
           <div className="Badges__list">
             {this.state.error &&
-                `Error: ${this.props.error.message}`
+                `Error: ${this.state.error.message}`
             }
             <BadgesList badges={this.state.data} />
 
@@ -117,7 +122,7 @@ class Badges extends Component {
               <Loader />
             }
 
-            {!this.state.loading &&
+            {!this.state.loading && isData &&
               <div className="Badge__more">
                 <button onClick={() => this.fetchReactApi()} className="btn btn-primary">Load more</button>
               </div>

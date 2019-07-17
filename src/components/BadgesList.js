@@ -8,6 +8,16 @@ library.add(fab)
 
 class BadgesList extends Component {
   render() {
+    if (!this.props.badges) {
+      return <div></div>
+    }
+    if (this.props.badges && this.props.badges.length === 0) {
+      return (
+        <div>
+          <h3>No badges were found</h3>
+        </div>
+      )
+    }
     return (
       <Fragment>
         <ul className="list-unstyled">

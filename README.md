@@ -303,4 +303,30 @@ Las llamadas a una API siguen un patrón similar siempre que las hacemos, cada l
 Una llamada a una API es un proceso asíncrono, es decir que lo comenzamos pero no sabemos cuándo acabará. Por lo mismo la función a escribir debe ser asíncrona.
 La llamada se hará usando fetch que es una función de React que al pasarle una dirección de internet, hará una petición GET y lo que sea que exista ahí será devuelto.
 
-### SOLICITANDO DATOS GET
+### SIMULACIÓN SERVIDOR
+
+Para esta clase si han trabajado con un proyecto creado a través del comando npm create-react-app my-app en necesario que vayan al repositorio del proyecto en:
+
+<https://github.com/Sparragus/platzi-badges/tree/15.MejorandoElUXDeUnaPeticion>
+
+De allí tomar y agregar a su proyecto la carpeta ‘server’ junto con el archivo ‘api.js’.
+
+Seguido a esto deben instalar las siguientes dependencias:
+
+npm install faker --save-dev
+npm install json-server --save-dev
+npm install npm-run-all --save-dev
+
+Finalmente modifiquen el archivo ‘package.json’ en el objeto ‘scripts’ para que quede de la siguiente forma:
+
+“scripts”: {
+“start”: “npm-run-all -p client server”,
+“client”: “react-scripts start”,
+“server”: “json-server --port 3001 --watch server/db.json”,
+“seed”: “node server/seed.js”,
+“build”: “react-scripts build”,
+“test”: “react-scripts test”,
+“eject”: “react-scripts eject”
+}
+
+De esta forma podrán continuar con la practica sin ningún inconveniente.
