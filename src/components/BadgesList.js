@@ -1,11 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import Gravatar from './Gravatar'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
+import BadgeListItem from './BadgeListItem'
 import './styles/BadgesList.css'
-
-library.add(fab)
 
 class BadgesList extends Component {
   render() {
@@ -25,21 +20,14 @@ class BadgesList extends Component {
           {this.props.badges.map(badge => {
             return (
               <li key={badge.id}>
-                <div className="Badge__min">
-                  <div className="Badge__min-img">
-                    <Gravatar email={badge.email} />
-                  </div>
-                  <div className="Badge__min-content">
-                    <div className="Badge__min-name">{badge.firstName} {badge.lastName}</div>
-                    <div className="Badge__min-twitter">
-                      <span className="Badge__min-icon">
-                        <FontAwesomeIcon icon={['fab', 'twitter']} />
-                      </span>
-                      @{badge.twitter}
-                    </div>
-                    <div className="Badge__min-jobtitle">{badge.jobTitle}</div>
-                  </div>
-                </div>
+                <BadgeListItem
+                  email={badge.email}
+                  firstName={badge.firstName}
+                  lastName={badge.lastName}
+                  twitter={badge.twitter}
+                  jobTitle={badge.jobTitle}
+                  avatarUrl={badge.avatarUrl}
+                />
               </li>
             )
           })}
