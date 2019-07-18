@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import Gravatar from './Gravatar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
@@ -26,7 +27,7 @@ class BadgesList extends Component {
               <li key={badge.id}>
                 <div className="Badge__min">
                   <div className="Badge__min-img">
-                    <img src={badge.avatarUrl} alt="Avatar"/>
+                    <Gravatar email={badge.email} />
                   </div>
                   <div className="Badge__min-content">
                     <div className="Badge__min-name">{badge.firstName} {badge.lastName}</div>

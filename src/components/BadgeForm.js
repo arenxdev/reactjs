@@ -5,18 +5,12 @@ class BadgeForm extends Component {
   handleClick = event => {
     console.log('Button was clicked')
   }
-  
-  handleSubmit = event => {
-    event.preventDefault()
-    console.log('Form was submitted')
-    console.log(this.props.formValues)
-  }
 
   render() {
     return (
       <div>
         <h1>New Attendant</h1>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.props.onSubmit}>
           <div className="form-group">
             <label htmlFor="firstName">First Name</label>
             <input onChange={this.props.onChange} className="form-control" type="text" name="firstName" value={this.props.formValues.firstName} />

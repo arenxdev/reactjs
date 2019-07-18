@@ -330,3 +330,11 @@ Finalmente modifiquen el archivo ‘package.json’ en el objeto ‘scripts’ p
 }
 
 De esta forma podrán continuar con la practica sin ningún inconveniente.
+
+### Enviando datos POST
+
+MD5 es una pequeña librería a la cual se le da un texto y ella regresa un hash.
+
+Podremos hacer pruebas para cifrar nuestros textos a md5 en el siguiente sitio MD5 Online
+
+Hola Platzi = d3bfb9302fb1007c0f996b41cba2818c
