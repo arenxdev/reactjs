@@ -331,10 +331,22 @@ Finalmente modifiquen el archivo ‘package.json’ en el objeto ‘scripts’ p
 
 De esta forma podrán continuar con la practica sin ningún inconveniente.
 
-### Enviando datos POST
+### ENVIANDO DATOS POST
 
 MD5 es una pequeña librería a la cual se le da un texto y ella regresa un hash.
 
 Podremos hacer pruebas para cifrar nuestros textos a md5 en el siguiente sitio MD5 Online
 
 Hola Platzi = d3bfb9302fb1007c0f996b41cba2818c
+
+### MANEJANDO LOS ESTADOS DURANTE LA PETICIÓN POST
+
+De la misma manera en la que se manejan los estados cuando se solicitan datos, deben ser manejados cuando los datos son enviados.
+
+Existe un tiempo entre que se da clic y los datos son enviados. Ese tiempo de espera es necesario visualizarlo. Igual hay que mostrar mensajes de error cuando no funcionan las cosas.
+
+Luego de que se inserta el Badge podemos regresar al listado de los Badges utilizando un prop que las páginas reciben, debido a que las páginas se las estamos dando a las rutas de react router.
+
+```javascript
+  this.props.history.push('/badges')
+```

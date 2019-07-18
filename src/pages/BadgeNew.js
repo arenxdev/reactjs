@@ -2,13 +2,14 @@ import React, { Component, Fragment } from 'react'
 import Header from '../components/Header'
 import Badge from '../components/Badge'
 import BadgeForm from '../components/BadgeForm'
+import PageLoader from '../components/PageLoader'
 import md5 from 'md5'
 import api from '../api'
 
 class BadgeNews extends Component {
   constructor(props) {
     super(props)
-    this.state = {form : {firstName: '', lastName: '', email: '', jobTitle: '', twitter: ''}}
+    this.state = {loading: false, error: null, form: {firstName: '', lastName: '', email: '', jobTitle: '', twitter: ''}}
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -25,13 +26,16 @@ class BadgeNews extends Component {
     try {
       await api.badges.create(this.state.form)
       this.setState({loading: false})
+      this.props.history.push('/badges')
     } catch (error) {
       this.setState({loading: false, error: error})
     }
   }
 
-
   render() {
+    if(this.state.loading) {
+      return <PageLoader />
+    }
     return (
       <Fragment>
         <Header />
@@ -52,6 +56,7 @@ class BadgeNews extends Component {
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 formValues={this.state.form}
+                error={this.state.error}
               />
             </div>
           </div>

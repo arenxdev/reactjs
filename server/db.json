@@ -449,6 +449,24 @@
       "jobTitle": "Lawyer",
       "twitter": "ckaufmanpr",
       "id": "npaYZKI"
+    },
+    {
+      "firstName": "Clara Katherine",
+      "lastName": "Murillo",
+      "email": "kathecode@gmail.com",
+      "jobTitle": "Full Stack Developer",
+      "twitter": "kathe_ing",
+      "avatarUrl": "https://www.gravatar.com/avatar/2aa5564ea18eeb5d380c59581ba88afc?d=identicon",
+      "id": "1zmSuVF"
+    },
+    {
+      "firstName": "Maria Carolina",
+      "lastName": "Isaacs",
+      "email": "ma.isaacs@gmail.com",
+      "jobTitle": "Super Mom",
+      "twitter": "mon_super",
+      "avatarUrl": "https://www.gravatar.com/avatar/534b920527f3d1be51319278b11398b2?d=identicon",
+      "id": "ijNTn_V"
     }
   ]
 }
