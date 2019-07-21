@@ -1,0 +1,13 @@
+.Badgedetail__actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 190px;
+  width: 130px;
+}
+
+.Badgedetail__space {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 40px;
+}

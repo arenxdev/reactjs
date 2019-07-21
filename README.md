@@ -350,3 +350,62 @@ Luego de que se inserta el Badge podemos regresar al listado de los Badges utili
 ```javascript
   this.props.history.push('/badges')
 ```
+
+### ACTUALIZACIONES AUTOMÁTICAS
+
+**Polling** consiste en que cada cierto tiempo que es definido por nosotros se buscan los datos y se actualizan automáticamente. Esto se hará constantemente hasta que el usuario se vaya de la página.
+
+## MEJORANDO LA INTERFAZ DE USUARIO
+
+### UI COMPONENTS Y UI CONTAINERS
+
+En la programación es bueno separar las tareas en diferentes funciones y en React sucede lo mismo. Cuando un componente hace demasiado, probablemente es mejor dividirlo en dos.
+
+Esta técnica de componentes presentacionales y componentes container es común, útil y hace parte de las buenas prácticas.
+
+### PORTALES
+
+Hay momentos en los que queremos renderizar un modal, un tooltip, etc. Esto puede volverse algo complicado ya sea por la presencia de un z-index o un overflow hidden.
+
+En estos casos lo ideal será renderizar en un nodo completamente aparte y para esto React tiene una herramienta llamada **Portales** que funcionan parecido a `ReactDOM.render`; se les dice qué se desea renderizar y dónde, con la diferencia de que ese dónde puede ser fuera de la aplicación.
+
+EL método `ReactDOM.createPortal` recibe dos argumentos, el qué y en dónde.
+
+```javascript
+  <div className="Badgedetail__actions">
+    <h2>Actions:</h2>
+    <Link to={`/badges/${props.badge.id}/edit`} className="btn btn-primary">Edit</Link>
+    <button onClick={props.onDelete} className="btn btn-danger">Delete</button>
+    {ReactDOM.createPortal(<h1>Hola, realmente no estoy aquí</h1>, document.getElementById('modal'))}
+  </div>
+```
+
+### MODALES
+
+La técnica de usar componentes genéricos para crear uno nuevo especializado se llama composición y es una herramienta que todo buen programador debe saber utilizar.
+
+```javascript
+  import React from 'react'
+  import ReactDOM from 'react-dom'
+  import './styles/Modal.css'
+
+  const Modal = props => {
+    if(!props.isOpen) {
+      return null
+    }
+
+    return ReactDOM.createPortal(
+      <div className="Modal">
+        <div className="Modal__container">
+          <button onClick={props.onClose} className="Modal__close-button">
+            X
+          </button>
+          {props.children}
+        </div>
+      </div>,
+      document.getElementById('modal')
+    )
+  }
+
+  export default Modal
+```

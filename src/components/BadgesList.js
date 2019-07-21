@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import BadgeListItem from './BadgeListItem'
 import './styles/BadgesList.css'
 
@@ -20,14 +21,16 @@ class BadgesList extends Component {
           {this.props.badges.map(badge => {
             return (
               <li key={badge.id}>
-                <BadgeListItem
-                  email={badge.email}
-                  firstName={badge.firstName}
-                  lastName={badge.lastName}
-                  twitter={badge.twitter}
-                  jobTitle={badge.jobTitle}
-                  avatarUrl={badge.avatarUrl}
-                />
+                <Link className="text-reset text-decoration-none" to={`/badges/${badge.id}/details`}>
+                  <BadgeListItem
+                    email={badge.email}
+                    firstName={badge.firstName}
+                    lastName={badge.lastName}
+                    twitter={badge.twitter}
+                    jobTitle={badge.jobTitle}
+                    avatarUrl={badge.avatarUrl}
+                  />
+                </Link>
               </li>
             )
           })}

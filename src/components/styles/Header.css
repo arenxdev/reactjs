@@ -7,8 +7,20 @@
   color: #ffffff;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.Header__divimg {
+  margin: 0 40px;
 }
 
 .Header__img {
   max-height: 100px;
+}
+
+.Header__title {
+  margin: 0 40px;
+  height: 100px;
+  display: flex;
+  align-items: flex-end;
 }

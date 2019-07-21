@@ -6,10 +6,14 @@ import PageLoader from '../components/PageLoader'
 import md5 from 'md5'
 import api from '../api'
 
-class BadgeNews extends Component {
+class BadgeEdit extends Component {
   constructor(props) {
     super(props)
     this.state = {loading: false, error: null, form: {firstName: '', lastName: '', email: '', jobTitle: '', twitter: ''}}
+  }
+
+  componentDidMount() {
+    this.fetchData()
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -19,12 +23,22 @@ class BadgeNews extends Component {
     }
     this.setState(obj)
   }
+
+  fetchData = async () => {
+    this.setState({loading: true, error: null })
+    try {
+      const data = await api.badges.read(this.props.match.params.badgeId)
+      this.setState({loading: false, form: data})
+    } catch (error) {
+      this.setState({loading: false, error})
+    }
+  }
   
   handleSubmit = async event => {
     event.preventDefault()
     this.setState({loading: true, error: null})
     try {
-      await api.badges.create(this.state.form)
+      await api.badges.update(this.props.match.params.badgeId, this.state.form)
       this.setState({loading: false})
       this.props.history.push('/badges')
     } catch (error) {
@@ -43,7 +57,6 @@ class BadgeNews extends Component {
           <div className="row">
             <div className="col">
               <Badge
-                formtitle="New Attendant"
                 firstName={this.state.form.firstName || 'FIRST_NAME'}
                 lastName={this.state.form.lastName || 'LAST_NAME'}
                 jobTitle={this.state.form.jobTitle || 'JOB_TITLE'}
@@ -53,7 +66,8 @@ class BadgeNews extends Component {
               />
             </div>
             <div className="col">
-              <BadgeForm 
+              <BadgeForm
+                formtitle="Edit Attendant"
                 onChange={this.handleChange}
                 onSubmit={this.handleSubmit}
                 formValues={this.state.form}
@@ -67,4 +81,4 @@ class BadgeNews extends Component {
   }
 }
 
-export default BadgeNews
+export default BadgeEdit
