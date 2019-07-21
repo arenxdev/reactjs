@@ -118,7 +118,9 @@ class Badges extends Component {
             {this.state.error &&
               <PageError error={this.state.error} />
             }
-            <BadgesList badges={this.state.data} />
+            {this.state.data && 
+              <BadgesList badges={this.state.data} />
+            }
 
             {this.state.loading &&
               <PageLoader />
